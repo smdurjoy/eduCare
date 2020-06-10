@@ -5,15 +5,17 @@ class TopBanner extends Component {
     render() {
         return (
             <Fragment>
-                <Container className="topFixedBanner" fluid={true}>
+                <Container className="topFixedBanner p-0" fluid={true}>
                     <div className="topBannerOverlay">
-                        <Row>
-                            <Col className="text-center">
-                                <h6 className="topTitle">We believe</h6>
-                                <h2 className="topSubTitle">Passion of learning</h2>
-                                <h6>Its a great platform to learn</h6>
-                            </Col>
-                        </Row>
+                        <Container className="topContent">
+                            <Row>
+                                <Col className="text-center">
+                                    <h6 className="topSubTitle">We believe</h6>
+                                    <h2 className="topTitle">Passion for Learning</h2>
+                                    <h6 className="topSubTitle">and Its a great platform to learn</h6>
+                                </Col>
+                            </Row>
+                        </Container>
                     </div>
                 </Container>
             </Fragment>

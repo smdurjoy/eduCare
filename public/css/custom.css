@@ -4,8 +4,14 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* top banner css start*/
+
 .topFixedBanner{
-    background-image: url("https://cdn.pixabay.com/photo/2017/12/22/08/01/paper-3033204_960_720.jpg");
+    background-image: url("../images/topBanner.jpg");
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -13,9 +19,119 @@
     background-size: cover;
 }
 
-/*.topBannerOverlay{*/
-/*    position: absolute;*/
-/*    min-height: 500px;*/
-/*    width: 100%;*/
-/*    background: rgba(0,0,0,0.7);*/
-/*}*/
+.topBannerOverlay{
+    position: absolute;
+    min-height: 500px;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.topContent {
+    margin-top: 14rem;
+}
+
+.topTitle {
+    font-size: 55px;
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif swap;
+}
+
+.topSubTitle {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif swap;
+}
+/* top banner css end */
+
+
+/* navbar css start */
+.navTitle{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif swap;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.navTitleScroll{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif swap;
+    color: #0073E6 !important;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.navTitleScroll:hover{
+    text-decoration: none;
+}
+
+.navBackground{
+    -webkit-transition:background-color 400ms linear ;
+    -moz-transition:background-color 400ms linear ;
+    -o-transition:background-color 400ms linear ;
+    transition:background-color 400ms linear ;
+    background-color: rgba(00,00,00,0.0) !important;
+    border-bottom: .5px solid #2d2f2d;
+}
+
+.navBackgroundScroll{
+    -webkit-transition:background-color 400ms linear ;
+    -moz-transition:background-color 400ms linear ;
+    -o-transition:background-color 400ms linear ;
+    transition:background-color 400ms linear ;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 6px 0 rgba(0,115,230,0.3);
+}
+
+.navItem{
+    font-size: 14px;
+    text-decoration: none !important;
+    font-family: 'Lato', sans-serif swap;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
+
+.navItemScroll{
+    font-size: 14px;
+    text-decoration: none !important;
+    font-family: 'Lato', sans-serif swap;
+    font-weight: 700;
+    color: #2B2B2B !important;
+    text-transform: uppercase;
+}
+
+.purchasesBtn {
+    font-size: 14px;
+    text-decoration: none !important;
+    font-family: 'Lato', sans-serif swap;
+    font-weight: 700;
+    color: #fff !important;
+    text-transform: uppercase;
+    background: #2B2B2B;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.social {
+    color: #fff;
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.social:hover {
+    color: #fff;
+}
+
+.socialScroll {
+    color: #2B2B2B;
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.socialScroll:hover {
+    color: #2B2B2B;
+}
+/* navbar css end */

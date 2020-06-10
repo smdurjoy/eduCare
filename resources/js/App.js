@@ -1,13 +1,12 @@
 import React from 'react';
-import Navigation from "./components/Navigation";
-import TopBanner from "./components/TopBanner";
+import {BrowserRouter} from "react-router-dom";
+import AppRoute from "./routes/AppRoute";
 
 function App() {
     return (
-        <div>
-            <Navigation />
-            <TopBanner />
-        </div>
+        <BrowserRouter>
+            <AppRoute/>
+        </BrowserRouter>
     );
 }
 
