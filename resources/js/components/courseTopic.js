@@ -15,10 +15,10 @@ class CourseTopic extends Component {
 
                         <Col md={6} lg={6} sm={12}>
                             <div className="courseTopics">
-                                <div className="box1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium beatae distinctio eaque ex expedita nam nostrum officiis provident velit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quis!</div>
-                                <div className="box2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, recusandae!</div>
-                                <div className="box3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cupiditate doloremque doloribus explicabo inventore pariatur quos reprehenderit temporibus velit vero.</div>
-                                <div className="box4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, totam?</div>
+                                <div className="js text-center"> <span>JavaScript</span> </div>
+                                <div className="php text-center"> <span>PHP</span> </div>
+                                <div className="python text-center"> <span>Python</span> </div>
+                                <div className="more text-center"> Browse <br/> More </div>
                             </div>
                         </Col>
                     </Row>
