@@ -18,7 +18,7 @@ class TopCourses extends Component {
         Axios.get("/homeCourseData").then((response) => {
             if(response.status == 200) {
                 this.setState({data:response.data, isLoading:false})
-            } else {
+            } else if(response.data == null) {
                 this.setState({isError:true, isLoading:false})
             }
         }).catch((error) => {

@@ -6,7 +6,7 @@ class Loading extends Component {
     render() {
         return (
             <Fragment>
-                <Container>
+                <Container className="text-center">
                     <Row>
                         <Col>
                             <img src={loadingGif}/>
