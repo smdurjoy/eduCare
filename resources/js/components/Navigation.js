@@ -45,11 +45,11 @@ class Navigation extends Component {
                             <Nav.Link> <NavLink className={this.state.navBarItem} className="purchasesBtn" to="/contact">Class Room</NavLink></Nav.Link>
                         </Nav>
                         <div>
-                            <a href="#" className={this.state.social}> <i class="fab fa-facebook-f"></i> </a>
-                            <a href="#" className={this.state.social}> <i class="fab fa-twitter"></i> </a>
-                            <a href="#" className={this.state.social}> <i class="fab fa-youtube"></i> </a>
-                            <a href="#" className={this.state.social}> <i class="fab fa-instagram"></i> </a>
-                            <a href="#" className={this.state.social}> <i class="fas fa-search"></i> </a>
+                            <a href="#" className={this.state.social}> <i className="fab fa-facebook-f"></i> </a>
+                            <a href="#" className={this.state.social}> <i className="fab fa-twitter"></i> </a>
+                            <a href="#" className={this.state.social}> <i className="fab fa-youtube"></i> </a>
+                            <a href="#" className={this.state.social}> <i className="fab fa-instagram"></i> </a>
+                            <a href="#" className={this.state.social}> <i className="fas fa-search"></i> </a>
                         </div>
                     </Navbar.Collapse>
                 </Navbar>
