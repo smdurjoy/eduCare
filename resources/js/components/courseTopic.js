@@ -15,10 +15,10 @@ class CourseTopic extends Component {
 
                         <Col md={6} lg={6} sm={12}>
                             <div className="courseTopics">
-                                <div className="js text-center"> <span>JavaScript</span> </div>
-                                <div className="php text-center"> <span>PHP</span> </div>
-                                <div className="python text-center"> <span>Python</span> </div>
-                                <div className="more text-center"> Browse <br/> More </div>
+                                <div className="js text-center"><a href="#"> <span>JavaScript</span> </a></div>
+                                <div className="php text-center"> <a href="#"> <span>PHP</span> </a></div>
+                                <div className="python text-center"> <a href="#"> <span>Python</span> </a></div>
+                                <div className="more text-center"> <a href="#" className="moreLink"> Browse <br/> More </a></div>
                             </div>
                         </Col>
                     </Row>

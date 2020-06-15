@@ -264,21 +264,71 @@ body {
     padding: 70px 40px;
     font-size: 20px;
     text-transform: uppercase;
+    color: #ffffff !important;
 
 }
 
 .courseTopics span {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 800;
     text-transform: uppercase;
     color: #1e2c3c;
     background: #fff;
     padding: 10px;
 }
 
+.courseTopics a {
+    text-decoration: none;
+}
+
+.courseTopics a:hover {
+    text-decoration: none;
+}
+
+.moreLink {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.moreLink:hover {
+    color: #ffffff;
+}
+
+/*course component*/
+.topCourse {
+    background: #1e2c3c;
+    color: #ffffff;
+}
+
 .title {
     font-size: 35px;
     font-weight: 800;
     font-family: 'Jost', sans-serif;
-    margin-top: 5rem;
+    margin-top: 5rem !important;
+}
+
+.courseName{
+    margin-top: 1rem;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.courseDescription{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.courseCard{
+    margin: 5px 5px 5px 5px;
+    height: 22rem;
+    padding: 60px 30px 60px 30px;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2);
+}
+
+.courseCard:hover{
+    box-shadow: 0 0 8px 0 rgba(0,115,230,0.2);
+}
+
+.courseRow {
+    margin-top: 7rem !important;
 }
