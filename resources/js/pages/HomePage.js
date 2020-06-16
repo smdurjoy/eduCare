@@ -6,6 +6,8 @@ import TopCourses from "../components/topCourses";
 import Loading from "../components/Loading";
 import TotalCount from "../components/totalCount";
 import Categories from "../components/Categories";
+import CsView from "../components/CSView";
+import Footer from "../components/Footer";
 
 class HomePage extends Component {
     render() {
@@ -17,6 +19,8 @@ class HomePage extends Component {
                 <TopCourses />
                 <TotalCount />
                 <Categories />
+                <CsView />
+                <Footer />
             </Fragment>
         );
     }

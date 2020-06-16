@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif !important;
     color: #1e2c3c;
 }
 
@@ -372,6 +372,76 @@ body {
 .totalTitle h2 {
     font-weight: 700;
     font-family: 'Jost', sans-serif;
+}
+
+/*class and student view component*/
+.csViewRow {
+    align-items: center;
+    height: 300px;
+    background: #ffffff;
+    margin-bottom: 3rem;
+}
+
+.csDes h2{
+    font-weight: 800;
+    font-family: 'Jost', sans-serif;
+}
+
+.csDes p{
+    font-weight: 700;
+}
+
+.tsCount {
+    float: right;
+    font-weight: 800;
+    font-family: 'Jost', sans-serif;
+}
+
+.tsCount span{
+    color: red;
+}
+
+.csbtn {
+    float: right;
+}
+
+/*footer component*/
+.footerRow {
+    margin-bottom: 2rem;
+}
+
+.footerTitle {
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
+    font-size: 25px;
+}
+
+.footerLink {
+    color: #1e2c3c;
+    text-decoration: none;
+}
+
+.footerLink:hover {
+    color: red;
+    text-decoration: none;
+}
+
+.copyrightSection{
+    padding: 20px 20px 20px 20px;
+    background-color: #438efc;
+}
+
+.copyrightLink{
+    color: #ffffff;
+    font-family: 'Montserreat',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.copyrightLink:hover{
+    color: #ddd;
+    text-decoration: none;
 }
 
 /*wentWrong component*/
