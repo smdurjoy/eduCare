@@ -1,22 +1,59 @@
 import React, {Component, Fragment} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
+import Axios from "axios";
+import Loading from "./Loading";
+import WentWrong from "./WentWrong";
 
 class Categories extends Component {
+    constructor() {
+        super();
+        this.state = {
+            categoryData: [],
+            isLoading: true,
+            isError: false
+        }
+    }
+
+    componentDidMount() {
+        Axios.get('/homeCategoryData').then((response) => {
+            if(response.status == 200) {
+                this.setState({categoryData:response.data, isLoading:false});
+            } else {
+                this.setState({isError: true, isLoading: false})
+            }
+        }).catch((error) => {
+            this.setState({isError: true, isLoading: false})
+        })
+    }
+
     render() {
-        return (
-            <Fragment>
-                <Container>
-                    <Row>
-                        <Col lg={6} md={6} sm={12}>
-
-                        </Col>
-                        <Col lg={6} md={6} sm={12}>
-
-                        </Col>
-                    </Row>
-                </Container>
-            </Fragment>
-        );
+        if(this.state.isLoading == true) {
+            return <Loading />
+        } else if(this.state.isError == true){
+            return <WentWrong />
+        } else {
+            const myData = this.state.categoryData;
+            const myView = myData.map(data => {
+                return(
+                    <Col lg={4} md={4} sm={12}>
+                        <div className="courseCard text-center">
+                            <img src={data.category_image}/>
+                            <h2 className="courseName">{data.category_name}</h2>
+                        </div>
+                    </Col>
+                )
+            })
+            return (
+                <Fragment>
+                    <Container fluid={true} className="text-center topCourse">
+                        <h3 className="title">Top Categories</h3>
+                        <Row className="courseRow">
+                            {myView}
+                        </Row>
+                    </Container>
+                </Fragment>
+            );
+        }
     }
 }
 

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/homeCourseData', 'HomeController@getHomeCourseData');
+Route::get('/homeCategoryData', 'HomeController@getHomeCategoryData');
 
 Route::get('/', function () {
     return view('index');

@@ -5,6 +5,7 @@ import CourseTopic from "../components/courseTopic";
 import TopCourses from "../components/topCourses";
 import Loading from "../components/Loading";
 import TotalCount from "../components/totalCount";
+import Categories from "../components/Categories";
 
 class HomePage extends Component {
     render() {
@@ -15,6 +16,7 @@ class HomePage extends Component {
                 <CourseTopic />
                 <TopCourses />
                 <TotalCount />
+                <Categories />
             </Fragment>
         );
     }
