@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//home page controllers
 Route::get('/homeCourseData', 'HomeController@getHomeCourseData');
 Route::get('/homeCategoryData', 'HomeController@getHomeCategoryData');
 Route::get('/footerData', 'HomeController@getFooterData');
 Route::get('/homeEtc', 'HomeController@getHomeEtcData');
+
+//course page controllers
+Route::get('/courseData', 'CourseController@getCourseData');
 
 Route::get('/', function () {
     return view('index');

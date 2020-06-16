@@ -444,6 +444,36 @@ body {
     text-decoration: none;
 }
 
+/*course page css*/
+.courseImageCol {
+    position: relative;
+}
+
+.courseImageCol img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.courseLink {
+    background: red;
+    padding: 3px 5px;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.courseLink:hover {
+    text-decoration: none;
+    background: #d50202;
+    color: #ffffff;
+}
+
 /*wentWrong component*/
 .wentWrongImage {
     height: 200px;
