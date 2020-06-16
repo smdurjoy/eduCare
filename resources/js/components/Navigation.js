@@ -34,7 +34,7 @@ class Navigation extends Component {
         return (
             <Fragment>
                 <Navbar fixed="top" variant="dark" className={this.state.navBarBack} expand="md">
-                    <Navbar.Brand className={this.state.navBarTitle}> <img src={navIcon}/> eLearning</Navbar.Brand>
+                    <Navbar.Brand className={this.state.navBarTitle}> <img src={navIcon}/> eduCare</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto ml-auto">

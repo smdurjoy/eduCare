@@ -38,7 +38,13 @@ class TotalCount extends Component {
                                 </Col>
                                 <Col lg={10} md={10} sm={12} className="totalCol">
                                     <div className="totalNumber">
-                                        1.2k
+                                        <CountUp start={0} end={400}>
+                                            {({ countUpRef, start }) => (
+                                                <VisibilitySensor onChange={start} delayedCall>
+                                                    <span ref={countUpRef}/>
+                                                </VisibilitySensor>
+                                            )}
+                                        </CountUp>
                                     </div>
                                     <div className="totalTitle">
                                         <h2>Large selection of courses</h2>
@@ -52,7 +58,7 @@ class TotalCount extends Component {
                                 </Col>
                                 <Col lg={10} md={10} sm={12} className="totalCol">
                                     <div className="totalNumber">
-                                        <CountUp start={0} end={24}>
+                                        <CountUp start={0} end={32}>
                                             {({ countUpRef, start }) => (
                                                 <VisibilitySensor onChange={start} delayedCall>
                                                     <span ref={countUpRef}/>

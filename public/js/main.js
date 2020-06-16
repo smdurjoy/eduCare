@@ -50933,6 +50933,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50958,18 +50960,54 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CsView = /*#__PURE__*/function (_Component) {
   _inherits(CsView, _Component);
 
   var _super = _createSuper(CsView);
 
   function CsView() {
+    var _this;
+
     _classCallCheck(this, CsView);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this);
+    _this.state = {
+      total_students: '',
+      total_topics: '',
+      isLoading: true
+    };
+    return _this;
   }
 
   _createClass(CsView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/homeEtc').then(function (response) {
+        if (response.status == 200) {
+          _this2.setState({
+            total_students: response.data[0]['total_students'],
+            total_topics: response.data[0]['total_topics'],
+            isLoading: false
+          });
+        } else {
+          _this2.setState({
+            total_students: '---',
+            total_topics: '---',
+            isLoading: false
+          });
+        }
+      })["catch"](function (error) {
+        _this2.setState({
+          total_students: '---',
+          total_topics: '---',
+          isLoading: false
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
@@ -50985,7 +51023,7 @@ var CsView = /*#__PURE__*/function (_Component) {
         sm: 12
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "tsCount"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "400+"), " Topics || ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "321+"), " Students"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.total_topics, "+"), " Topics || ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.total_students, "+"), " Students"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         className: "btn viewCourseBtn csbtn"
       }, "Be a proud member ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-caret-right"
@@ -51141,6 +51179,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51167,18 +51207,63 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Footer = /*#__PURE__*/function (_Component) {
   _inherits(Footer, _Component);
 
   var _super = _createSuper(Footer);
 
   function Footer() {
+    var _this;
+
     _classCallCheck(this, Footer);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this);
+    _this.state = {
+      address: '',
+      phone: '',
+      email: '',
+      facebook: '',
+      youtube: '',
+      twitter: '',
+      footer_credit: '',
+      isLoading: true,
+      isError: false
+    };
+    return _this;
   }
 
   _createClass(Footer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/footerData').then(function (response) {
+        if (response.status == 200) {
+          _this2.setState({
+            address: response.data[0]['address'],
+            phone: response.data[0]['phone'],
+            email: response.data[0]['email'],
+            facebook: response.data[0]['facebook'],
+            youtube: response.data[0]['youtube'],
+            twitter: response.data[0]['twitter'],
+            footer_credit: response.data[0]['footer_credit'],
+            isLoading: false
+          });
+        } else {
+          _this2.setState({
+            isLoading: false,
+            isError: true
+          });
+        }
+      })["catch"](function (error) {
+        _this2.setState({
+          isLoading: false,
+          isError: true
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
@@ -51193,19 +51278,19 @@ var Footer = /*#__PURE__*/function (_Component) {
       }, "Follow Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "footerLink",
         target: "_blank",
-        href: "#"
+        href: this.state.facebook
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-facebook"
       }), " Facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "footerLink",
         target: "_blank",
-        href: "#"
+        href: this.state.youtube
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-youtube"
       }), " YouTube"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "footerLink",
         target: "_blank",
-        href: "#"
+        href: this.state.twitter
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-twitter"
       }), " Twitter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -51219,15 +51304,15 @@ var Footer = /*#__PURE__*/function (_Component) {
         className: "footerDes"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-map-marker-alt"
-      }), " East Guptapara, Rangpur"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), " ", this.state.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "footerDes"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-phone-square-alt"
-      }), " 01784996428"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), " ", this.state.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "footerDes"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-envelope"
-      }), " smdurjoy.cse@gmail.com")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }), " ", this.state.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: 3,
         md: 6,
         sm: 12,
@@ -51261,7 +51346,8 @@ var Footer = /*#__PURE__*/function (_Component) {
         className: "text-center copyrightSection"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "copyrightLink",
-        href: "#"
+        target: "_blank",
+        href: this.state.footer_credit
       }, "\xA9 smdurjoy")));
     }
   }]);
@@ -51445,7 +51531,7 @@ var Navigation = /*#__PURE__*/function (_Component) {
         className: this.state.navBarTitle
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: _images_navIcon_svg__WEBPACK_IMPORTED_MODULE_3___default.a
-      }), " eLearning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
+      }), " eduCare"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
         "aria-controls": "basic-navbar-nav"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
         id: "basic-navbar-nav"
@@ -52210,7 +52296,19 @@ var TotalCount = /*#__PURE__*/function (_Component) {
         className: "totalCol"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "totalNumber"
-      }, "1.2k"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countup__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        start: 0,
+        end: 400
+      }, function (_ref2) {
+        var countUpRef = _ref2.countUpRef,
+            start = _ref2.start;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_visibility_sensor__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          onChange: start,
+          delayedCall: true
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          ref: countUpRef
+        }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "totalTitle"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Large selection of courses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Explore a variety of fresh topics. Find the right instructor for you. Learn on your schedule.")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
         className: "mt-5"
@@ -52227,10 +52325,10 @@ var TotalCount = /*#__PURE__*/function (_Component) {
         className: "totalNumber"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_countup__WEBPACK_IMPORTED_MODULE_3___default.a, {
         start: 0,
-        end: 24
-      }, function (_ref2) {
-        var countUpRef = _ref2.countUpRef,
-            start = _ref2.start;
+        end: 32
+      }, function (_ref3) {
+        var countUpRef = _ref3.countUpRef,
+            start = _ref3.start;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_visibility_sensor__WEBPACK_IMPORTED_MODULE_4___default.a, {
           onChange: start,
           delayedCall: true
