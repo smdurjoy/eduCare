@@ -455,6 +455,11 @@ body {
 }
 
 /*course page css*/
+.courseDesCon {
+    background: white;
+    padding: 1rem;
+}
+
 .courseImageCol {
     position: relative;
 }
@@ -509,6 +514,46 @@ body {
 .skills {
     font-size: 16px;
     font-weight: 500;
+}
+
+.loadIcon {
+    margin-top: 10rem;
+}
+
+/*contact page css*/
+.contactForm {
+    font-family: 'Jost', sans-serif;
+}
+
+.contactLabel {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-control:focus{
+    border-radius: 2px !important;
+    border-color: #0073E6 !important;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2) !important;
+}
+
+.btn:focus{
+    border-radius: 2px !important;
+    border-color: #0073E6 !important;
+    box-shadow: 0 0 4px 0 rgba(0,115,230,0.2) !important;
+}
+
+.contactBtn {
+    background: #5fa2ff !important;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.contactBtn:hover {
+    background: #438efc !important;
 }
 
 /*wentWrong component*/

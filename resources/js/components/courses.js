@@ -45,7 +45,7 @@ class Courses extends Component {
                                 <Card border="light" style={{ width: '100%' }}>
                                     <Card.Header>
                                         <h6 className="float-left">{data.category.category_name}</h6>
-                                        <h6 className="float-right">Enrolled 1.2k+</h6>
+                                        <h6 className="float-right">Enrolled: {data.total_students}</h6>
                                     </Card.Header>
                                     <Card.Body>
                                         <Card.Title className="footerTitle text-center">{data.course_name}</Card.Title>

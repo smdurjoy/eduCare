@@ -10,6 +10,11 @@ import CsView from "../components/CSView";
 import Footer from "../components/Footer";
 
 class HomePage extends Component {
+
+    componentDidMount() {
+        window.scroll(0,0)
+    }
+
     render() {
         return (
             <Fragment>

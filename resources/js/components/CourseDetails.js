@@ -20,7 +20,7 @@ class CourseDetails extends Component {
             skill_all: '',
             video_url: '',
             course_link: '',
-            isLoading: true,
+            isLoading: "text-center",
             isError: false
         }
     }
@@ -37,7 +37,7 @@ class CourseDetails extends Component {
                     skill_all: response.data[0]['skill_all'],
                     video_url: response.data[0]['video_url'],
                     course_link: response.data[0]['course_link'],
-                    isLoading: false
+                    isLoading: "d-none"
                 })
             } else {
                 this.setState({isLoading: false, isError: true})
@@ -48,31 +48,28 @@ class CourseDetails extends Component {
     }
 
     render() {
-        if(this.state.isLoading == true) {
-            return <Loading/>
-        } else if(this.state.isError == true) {
-            return <WentWrong/>
-        } else {
-            return (
-                <Fragment>
-                    <Container className="smallFixedBanner p-0" fluid={true}>
-                        <div className="smallBannerOverlay">
-                            <Container className="topPageContentCourse">
-                                <Row>
-                                    <Col sm={12} md={6} lg={6}>
-                                        <h3 className="cName">{this.state.title}</h3>
-                                        <h5 className="totalLecture mt-2">Total Lecture: {this.state.total_lecture}</h5>
-                                        <h5 className="totalLecture mt-0">Total Student: {this.state.total_students}</h5>
-                                    </Col>
+        return (
+            <Fragment>
+                <Container className="smallFixedBanner p-0" fluid={true}>
+                    <div className="smallBannerOverlay">
+                        <Container className="topPageContentCourse">
+                            <Row>
+                                <Col sm={12} md={6} lg={6}>
+                                    <h3 className="cName">{this.state.title}</h3>
+                                    <h5 className="totalLecture mt-2">Total Lecture: {this.state.total_lecture}</h5>
+                                    <h5 className="totalLecture mt-0">Total Student: {this.state.total_students}</h5>
+                                </Col>
 
-                                    <Col sm={12} md={6} lg={6}>
-                                        <p className="courseDes">{this.state.long_des}</p>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </div>
-                    </Container>
+                                <Col sm={12} md={6} lg={6}>
+                                    <p className="courseDes">{this.state.long_des}</p>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                </Container>
+                <Container className="courseDesCon" fluid={true}>
                     <Container className="mt-5 mb-5">
+                        <Row className={this.state.isLoading}> <Loading/> </Row>
                         <Row>
                             <Col sm={12} md={6} lg={6}>
                                 <h1 className="courseName">Skill You Get</h1>
@@ -90,9 +87,9 @@ class CourseDetails extends Component {
                             </Col>
                         </Row>
                     </Container>
-                </Fragment>
-            );
-        }
+                </Container>
+            </Fragment>
+        );
     }
 }
 

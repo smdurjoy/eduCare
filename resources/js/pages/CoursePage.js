@@ -6,6 +6,11 @@ import Banner from "../components/banner";
 import Footer from "../components/Footer";
 
 class CoursePage extends Component {
+
+    componentDidMount() {
+        window.scroll(0,0)
+    }
+
     render() {
         return (
             <Fragment>

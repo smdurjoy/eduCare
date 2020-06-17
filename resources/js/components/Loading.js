@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import loadingGif from '../../images/loading.gif';
+import loaderIcon from '../../images/loader.svg';
 
 class Loading extends Component {
     render() {
@@ -9,7 +9,7 @@ class Loading extends Component {
                 <Container className="text-center">
                     <Row>
                         <Col>
-                            <img src={loadingGif}/>
+                            <img src={loaderIcon}/>
                         </Col>
                     </Row>
                 </Container>
