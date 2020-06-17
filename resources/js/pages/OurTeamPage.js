@@ -7,7 +7,7 @@ class OurTeamPage extends Component {
         return (
             <Fragment>
                 <Navigation />
-                <Banner />
+                <Banner title="Our Team"/>
             </Fragment>
         );
     }

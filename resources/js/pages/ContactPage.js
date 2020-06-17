@@ -8,7 +8,7 @@ class ContactPage extends Component {
         return (
             <Fragment>
                 <Navigation />
-                <Banner />
+                <Banner title="Contact Us"/>
                 <Contact />
             </Fragment>
         );

@@ -43,6 +43,7 @@ class Footer extends Component {
     render() {
         return (
             <Fragment>
+                <hr/>
                 <Container className="text-center p-4 footerSection">
                     <Row>
                         <Col lg={3} md={6} sm={12} className="p-2 text-justify">

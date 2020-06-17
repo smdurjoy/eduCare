@@ -172,7 +172,7 @@ body {
 /* small banner */
 .smallFixedBanner{
     background-image: url("../images/banner.jpg");
-    min-height: 400px;
+    min-height: 300px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -181,9 +181,20 @@ body {
 
 .smallBannerOverlay{
     position: absolute;
-    min-height: 400px;
+    min-height: 300px;
     width: 100%;
     background: rgba(0,0,0,0.5);
+}
+
+.bannerRow {
+    margin-top: 12rem;
+}
+
+.bannerTitle {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
+    color: #ffffff;
 }
 
 /* course topic section */
@@ -208,7 +219,7 @@ body {
 
 .viewCourseBtn {
     background: #5fa2ff !important;
-    color: #fff;
+    color: #ffffff;
     padding: 5px;
     font-size: 14px;
     font-weight: 600;
@@ -433,7 +444,6 @@ body {
 
 .copyrightLink{
     color: #ffffff;
-    font-family: 'Montserreat',sans-serif;
     font-weight: 400;
     font-size: 14px;
     text-decoration: none;
@@ -472,6 +482,33 @@ body {
     text-decoration: none;
     background: #d50202;
     color: #ffffff;
+}
+
+.topPageContentCourse {
+    margin-top: 8rem;
+}
+
+.cName {
+    color: #ffffff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.courseDes {
+    color: #ffffff;
+    font-size: 16px;
+    text-overflow: ellipsis;
+}
+
+.totalLecture {
+    color: red;
+    font-size: 16px;
+}
+
+.skills {
+    font-size: 16px;
+    font-weight: 500;
 }
 
 /*wentWrong component*/

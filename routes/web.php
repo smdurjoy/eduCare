@@ -21,6 +21,7 @@ Route::get('/homeEtc', 'HomeController@getHomeEtcData');
 
 //course page controllers
 Route::get('/courseData', 'CourseController@getCourseData');
+Route::get('/courseDetails/{courseId}', 'CourseController@getCourseDetails');
 
 Route::get('/', function () {
     return view('index');
