@@ -67,7 +67,7 @@ class Footer extends Component {
                         </Col>
                         <Col lg={3} md={6} sm={12} className="p-2 pl-5 text-justify">
                             <h1 className="footerTitle">Legal</h1>
-                            <Link className="footerLink" to="/Refund">Refund Policy</Link><br/>
+                            <Link className="footerLink" to="/refund">Refund Policy</Link><br/>
                             <Link className="footerLink" to="/Terms">Terms And Condition</Link><br/>
                             <Link  className="footerLink" to="/Privacy">Privacy Policy</Link >
                         </Col>

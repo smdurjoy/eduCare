@@ -43,7 +43,7 @@ class Courses extends Component {
                             </Col>
                             <Col md={8} lg={8} sm={12}>
                                 <Card border="light" style={{ width: '100%' }}>
-                                    <Card.Header>
+                                    <Card.Header className="courseCardHeader">
                                         <h6 className="float-left">{data.category.category_name}</h6>
                                         <h6 className="float-right">Enrolled: {data.total_students}</h6>
                                     </Card.Header>

@@ -5,6 +5,8 @@ import CoursePage from "../pages/CoursePage";
 import OurTeamPage from "../pages/OurTeamPage";
 import ContactPage from "../pages/ContactPage";
 import CourseDetailsPage from "../pages/courseDetailsPage";
+import RefundPolicyPage from "../pages/RefundPolicyPage";
+import PrivacyPage from "../pages/PrivacyPage";
 
 class AppRoute extends Component {
     render() {
@@ -16,6 +18,8 @@ class AppRoute extends Component {
                     <Route exact path="/ourTeam" component={OurTeamPage}/>
                     <Route exact path="/contact" component={ContactPage}/>
                     <Route exact path="/courseDetails/:courseId/:courseName" component={CourseDetailsPage}/>
+                    <Route exact path="/refund" component={RefundPolicyPage}/>
+                    <Route exact path="/privacy" component={PrivacyPage}/>
                 </Switch>
             </Fragment>
         );

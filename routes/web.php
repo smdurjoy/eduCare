@@ -23,6 +23,12 @@ Route::get('/homeEtc', 'HomeController@getHomeEtcData');
 Route::get('/courseData', 'CourseController@getCourseData');
 Route::get('/courseDetails/{courseId}', 'CourseController@getCourseDetails');
 
+//others
+Route::get('/privacyData', 'InformationController@getPrivacyData');
+Route::get('/refundData', 'InformationController@getRefundData');
+Route::get('/termsData', 'InformationController@getTermsData');
+Route::get('/aboutData', 'InformationController@getAboutData');
+
 Route::get('/', function () {
     return view('index');
 });

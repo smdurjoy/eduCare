@@ -455,6 +455,11 @@ body {
 }
 
 /*course page css*/
+.courseCardHeader {
+    background: #1e2c3c;
+    color: #ffffff;
+}
+
 .courseDesCon {
     background: white;
     padding: 1rem;
@@ -521,12 +526,8 @@ body {
 }
 
 /*contact page css*/
-.contactForm {
-    font-family: 'Jost', sans-serif;
-}
-
 .contactLabel {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -571,4 +572,26 @@ body {
 .wentWrong h3 span{
     color: red;
     font-family: 'Jost', sans-serif;
+}
+
+/*information*/
+.information {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.information h2 {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Jost', sans-serif;
+    margin-top: 1rem;
+}
+
+.information ul {
+   margin-left: 1rem;
+}
+
+.information h5 {
+   text-decoration: underline;
+    margin-top: 1rem;
 }

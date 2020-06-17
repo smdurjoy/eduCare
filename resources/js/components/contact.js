@@ -44,8 +44,8 @@ class Contact extends Component {
                     <Container className="mt-5 mb-5">
                         <Row>
                             <Col lg={6} md={6} sm={12}>
-                                <h1 className="title">Drop a message</h1>
-                                <Form className="contactForm">
+                                <h1 className="title">Drop a Message</h1>
+                                <Form>
                                     <Form.Group controlId="formBasicPassword">
                                         <Form.Label className="contactLabel">Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter Your Name" />
