@@ -67446,9 +67446,13 @@ var Navigation = /*#__PURE__*/function (_Component) {
       navBarTitle: 'navTitle',
       navBarBack: 'navBackground',
       navBarItem: 'navItem',
-      social: "ml-auto social"
+      social: "ml-auto social",
+      sBox: false,
+      searchBox: "d-none",
+      fIcon: 'fas fa-search'
     };
     _this.onScroll = _this.onScroll.bind(_assertThisInitialized(_this));
+    _this.showSearchBox = _this.showSearchBox.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67477,6 +67481,23 @@ var Navigation = /*#__PURE__*/function (_Component) {
       window.addEventListener('scroll', this.onScroll);
     }
   }, {
+    key: "showSearchBox",
+    value: function showSearchBox() {
+      if (this.state.sBox == false) {
+        this.setState({
+          sBox: true,
+          searchBox: "d-block",
+          fIcon: 'fas fa-times'
+        });
+      } else {
+        this.setState({
+          sBox: false,
+          searchBox: "d-none",
+          fIcon: 'fas fa-search'
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _React$createElement;
@@ -67500,13 +67521,13 @@ var Navigation = /*#__PURE__*/function (_Component) {
         className: this.state.navBarItem,
         to: "/",
         activeStyle: {
-          color: "#5fa2ff"
+          color: '#5fa2ff'
         }
       }, "Home"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         className: this.state.navBarItem,
         to: "/courses",
         activeStyle: {
-          color: "#5fa2ff"
+          color: '#5fa2ff'
         }
       }, "Courses"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         className: this.state.navBarItem,
@@ -67522,7 +67543,7 @@ var Navigation = /*#__PURE__*/function (_Component) {
         }
       }, "Contact")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], (_React$createElement = {
         className: this.state.navBarItem
-      }, _defineProperty(_React$createElement, "className", "purchasesBtn"), _defineProperty(_React$createElement, "to", "/contact"), _React$createElement), "Class Room"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, _defineProperty(_React$createElement, "className", "purchasesBtn"), _defineProperty(_React$createElement, "to", "/contact"), _React$createElement), "Purchase"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
         className: this.state.social
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -67543,11 +67564,21 @@ var Navigation = /*#__PURE__*/function (_Component) {
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-instagram"
       }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
+        href: "javascript:void(0)",
+        onClick: this.showSearchBox,
         className: this.state.social
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-search"
-      }), " ")))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: this.state.fIcon
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.state.searchBox
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-inline my-2 my-lg-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control mr-sm-2",
+        type: "search",
+        placeholder: "Search",
+        "aria-label": "Search"
+      })))));
     }
   }]);
 

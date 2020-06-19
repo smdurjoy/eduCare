@@ -595,3 +595,13 @@ body {
    text-decoration: underline;
     margin-top: 1rem;
 }
+
+/*search box*/
+.searchBox {
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    float: right !important;
+    margin-top: 4rem;
+    /*margin-left: auto;*/
+}
