@@ -20,6 +20,7 @@
                     <li class="nav-devider mt-0" style="margin-bottom: 5px"></li>
                     <li> <a href="{{ url('/admin') }}" ><span> <i class="fas fa-home"></i> </span><span class="hide-menu">Home</span></a></li>
                     <li> <a href="{{ url('/admin/visitor') }}" ><span> <i class="fas fa-users"></i> </span><span class="hide-menu">Visitor</span></a></li>
+                    <li> <a href="{{ url('/admin/category') }}" ><span> <i class="fas fa-chart-pie"></i> </span><span class="hide-menu">Category</span></a></li>
                 </ul>
             </nav>
         </div>

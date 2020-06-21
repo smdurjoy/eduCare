@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 p-5">
-            <table class="table table-striped table-sm" id="visitorTable" cellspacing="0" width="100%">
+            <h1 class="title text-center">Visitors</h1>
+            <table class="table table-striped table-sm" id="adminTable" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th scope="col">Id</th>

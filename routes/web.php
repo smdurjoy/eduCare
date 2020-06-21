@@ -13,28 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//home page controllers
+// Home page controllers
 Route::get('/', 'HomeController@index');
 Route::get('/homeCourseData', 'HomeController@getHomeCourseData');
 Route::get('/homeCategoryData', 'HomeController@getHomeCategoryData');
 Route::get('/footerData', 'HomeController@getFooterData');
 Route::get('/homeEtc', 'HomeController@getHomeEtcData');
 
-//course page controllers
+// Course page controllers
 Route::get('/courseData', 'CourseController@getCourseData');
 Route::get('/courseDetails/{courseId}', 'CourseController@getCourseDetails');
 
-//others
+// Others
 Route::get('/privacyData', 'InformationController@getPrivacyData');
 Route::get('/refundData', 'InformationController@getRefundData');
 Route::get('/termsData', 'InformationController@getTermsData');
 Route::get('/aboutData', 'InformationController@getAboutData');
 
 
-// admin routes
+// Admin routes
 Route::prefix('/admin')->namespace('Admin')->group(function() {
     Route::get('/', 'HomeController@index');
     Route::get('/visitor', 'VisitorController@visitor');
+
+//    Category routes
+    Route::get('/category', 'CategoryController@index');
+    Route::get('/getCategoryData', 'CategoryController@getCategoryData');
 });
 
 
