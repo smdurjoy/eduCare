@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //home page controllers
+Route::get('/', 'HomeController@index');
 Route::get('/homeCourseData', 'HomeController@getHomeCourseData');
 Route::get('/homeCategoryData', 'HomeController@getHomeCategoryData');
 Route::get('/footerData', 'HomeController@getFooterData');
@@ -31,11 +32,11 @@ Route::get('/aboutData', 'InformationController@getAboutData');
 
 
 // admin routes
-Route::get('/admin', 'Admin\AdminController@index');
-
-Route::get('/', function () {
-    return view('index');
+Route::prefix('/admin')->namespace('Admin')->group(function() {
+    Route::get('/', 'HomeController@index');
+    Route::get('/visitor', 'VisitorController@visitor');
 });
+
 
 Route::get('{ReactRoutePath}', function () {
     return view('index');
