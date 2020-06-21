@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Navigation from "../components/Navigation";
 import Banner from "../components/banner";
+import OurTeam from "../components/ourTeam";
 
 class OurTeamPage extends Component {
 
@@ -13,6 +14,7 @@ class OurTeamPage extends Component {
             <Fragment>
                 <Navigation />
                 <Banner title="Our Team"/>
+                <OurTeam/>
             </Fragment>
         );
     }

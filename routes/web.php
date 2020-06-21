@@ -29,6 +29,10 @@ Route::get('/refundData', 'InformationController@getRefundData');
 Route::get('/termsData', 'InformationController@getTermsData');
 Route::get('/aboutData', 'InformationController@getAboutData');
 
+
+// admin routes
+Route::get('/admin', 'Admin\AdminController@index');
+
 Route::get('/', function () {
     return view('index');
 });
