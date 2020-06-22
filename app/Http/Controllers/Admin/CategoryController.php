@@ -16,4 +16,14 @@ class CategoryController extends Controller
         $result = Category::all();
         return $result;
     }
+
+    function deleteCategory(Request $request) {
+        $id = $request->input('id');
+        $result = Category::where('id', '=', $id)->delete();
+        if($result == true) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
