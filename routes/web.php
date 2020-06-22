@@ -40,6 +40,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
     Route::get('/category', 'CategoryController@index');
     Route::get('/getCategoryData', 'CategoryController@getCategoryData');
     Route::post('/deleteCategory', 'CategoryController@deleteCategory');
+    Route::post('/categoryDetails', 'CategoryController@categoryDetails');
+    Route::post('/editCategory', 'CategoryController@editCategory');
 });
 
 

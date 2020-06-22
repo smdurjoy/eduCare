@@ -14,3 +14,33 @@
     height: 120px;
     text-align: center;
 }
+
+.loaderImage {
+    width: 120px;
+    height: auto;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.custom-select:focus {
+    box-shadow: none !important;
+}
+
+/*wentWrong div*/
+.wentWrongImage {
+    height: 200px;
+    width: 30%;
+}
+
+.wentWrong h3{
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Jost', sans-serif;
+}
+
+.wentWrong h3 span{
+    color: red;
+    font-family: 'Jost', sans-serif;
+}

@@ -26,4 +26,25 @@ class CategoryController extends Controller
             return 0;
         }
     }
+
+    function categoryDetails(Request $request) {
+        $id = $request->input('id');
+        $result = Category::where('id', '=', $id)->get();
+        return $result;
+    }
+
+    function editCategory(Request $request) {
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $img = $request->input('image');
+        $des = $request->input('description');
+
+        $result = Category::where('id', $id)->update(['category_name' => $name, 'category_image' => $img, 'category_des' => $des]);
+
+        if($result == true) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
