@@ -47,4 +47,18 @@ class CategoryController extends Controller
             return 0;
         }
     }
+
+    function addCategory(Request $request) {
+        $name = $request->input('name');
+        $img = $request->input('image');
+        $des = $request->input('des');
+
+        $result = Category::insert(['category_name' => $name, 'category_image' => $img, 'category_des' => $des, 'status' => 'Active']);
+
+        if($result == true) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

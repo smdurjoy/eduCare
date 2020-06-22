@@ -103,33 +103,88 @@ $('#categoryEditConfirmBtn').click(function () {
 
 // Edit category function
 function updateCategory(categoryUpdateId, categoryName, categoryImage, categoryDes) {
+    let alpha = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
     if(categoryName.length == 0) {
-        toastr.warning('Please enter category name');
+        toastr.error('Category Name is Empty');
     }
-    if(categoryImage.length == 0) {
-        toastr.warning('Please select an image');
+    else if(!categoryName.match(alpha)) {
+        toastr.error('Numbers Not Allowed !');
     }
-    if(categoryDes.length == 0) {
-        toastr.warning('Please enter category description');
+    else if(categoryImage.length == 0) {
+        toastr.error('Please Select an Image');
     }
-
-    axios.post('/admin/editCategory', {
-        id: categoryUpdateId,
-        name: categoryName,
-        image: categoryImage,
-        description: categoryDes
-    }).then(function (response) {
-        if(response.status == 200) {
-            toastr.success('Category Updated Successfully !');
-            getCategoryData();
-            $('#editModal').modal('hide');
-        } else {
+    else if(categoryDes.length == 0) {
+        toastr.error('Category Description is Empty');
+    } else {
+        axios.post('/admin/editCategory', {
+            id: categoryUpdateId,
+            name: categoryName,
+            image: categoryImage,
+            description: categoryDes
+        }).then(function (response) {
+            if(response.status == 200 && response.data == 1) {
+                toastr.success('Category Updated Successfully !');
+                getCategoryData();
+                $('#editModal').modal('hide');
+            } else {
+                toastr.error('Something Went Wrong !');
+                getCategoryData();
+                $('#editModal').modal('hide');
+            }
+        }).catch(function () {
             toastr.error('Something Went Wrong !');
             getCategoryData();
-        }
-    }).catch(function () {
-        toastr.error('Something Went Wrong !');
-        getCategoryData();
-    })
+            $('#editModal').modal('hide');
+        })
+    }
+}
+
+// Add category
+$('#addCategoryBtn').click(function () {
+    $('#addCategoryModal').modal('show');
+});
+
+// confirm add category
+$('#categoryAddConfirmBtn').click(function () {
+    let name = $('#addCategoryName').val();
+    let img = $('#addCategoryImage').val();
+    let des = $('#addCategoryDes').val();
+    addCategory(name, img, des);
+});
+
+function addCategory(categoryName, categoryImage, categoryDes) {
+    let alpha = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
+    if(categoryName.length == 0) {
+        toastr.error('Category Name is Empty');
+    }
+    else if(!categoryName.match(alpha)) {
+        toastr.error('Numbers Not Allowed !');
+    }
+    else if(categoryImage.length == 0) {
+        toastr.error('Please Select an Image');
+    }
+    else if(categoryDes.length == 0) {
+        toastr.error('Category Description is Empty');
+    } else {
+        axios.post('/admin/addCategory', {
+            name: categoryName,
+            image: categoryImage,
+            des: categoryDes
+        }).then(function (response) {
+            if(response.status == 200 && response.data == 1) {
+                toastr.success('Category Added Successfully !');
+                getCategoryData();
+                $('#addCategoryModal').modal('hide');
+            } else {
+                toastr.error('Something Went Wrong !');
+                getCategoryData();
+                $('#addCategoryModal').modal('hide');
+            }
+        }).catch(function () {
+            toastr.error('Something Went Wrong !');
+            getCategoryData();
+            $('#addCategoryModal').modal('hide');
+        })
+    }
 }
 

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 p-5 d-none" id="mainDiv">
                 <h1 class="title text-center">Categories</h1>
-
+                <button type="button" id="addCategoryBtn" class="btn btn-deep-purple btn-sm">Add Category</button>
                 <table class="table table-striped table-sm" cellspacing="0" width="100%" id="categoryTable">
                     <thead>
                     <tr>
@@ -80,6 +80,37 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                     <button id="categoryEditConfirmBtn" type="button" class="btn btn-danger btn-sm">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <h5 class="text-center mb-3">Add Category</h5>
+                    <h1 class="categoryAddId"></h1>
+                    <div class="" id="categoryAddDetails">
+                        <input type="text" id="addCategoryName" class="form-control mb-4" placeholder="Enter Category Name">
+                        <input type="text" id="addCategoryImage" class="form-control mb-4" placeholder="Enter Category Image URL">
+                        <input type="text" id="addCategoryDes" class="form-control mb-4" placeholder="Enter Category Description">
+                    </div>
+                    {{-- loader div --}}
+                    <div class="col-md-12 p-5 text-center mt-5 d-none" id="categoryLoaderDiv">
+                        <img class="loaderImage" src="{{ asset('images/adminLoader.svg') }}">
+                    </div>
+                    {{-- WentWrong div --}}
+                    <div class="col-md-12 p-5 wentWrong text-center d-none" id="categoryWentWrongDiv">
+                        <img class="wentWrongImage" src="{{ asset('images/wentWrong.png') }}">
+                        <h3><span>Opss!</span> Something Went Wrong!</h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
+                    <button id="categoryAddConfirmBtn" type="button" class="btn btn-danger btn-sm">Save</button>
                 </div>
             </div>
         </div>
