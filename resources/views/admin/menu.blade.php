@@ -21,6 +21,7 @@
                     <li> <a href="{{ url('/admin') }}" ><span> <i class="fas fa-home"></i> </span><span class="hide-menu">Home</span></a></li>
                     <li> <a href="{{ url('/admin/visitor') }}" ><span> <i class="fas fa-users"></i> </span><span class="hide-menu">Visitor</span></a></li>
                     <li> <a href="{{ url('/admin/category') }}" ><span> <i class="fas fa-chart-pie"></i> </span><span class="hide-menu">Category</span></a></li>
+                    <li> <a href="{{ url('/admin/course') }}" ><span> <i class="fas fa-code"></i> </span><span class="hide-menu">Course</span></a></li>
                 </ul>
             </nav>
         </div>

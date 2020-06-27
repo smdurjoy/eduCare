@@ -3,6 +3,88 @@ $(document).ready(function () {
     $('.dataTables_length').addClass('bs-select');
 });
 
+
+//Get course data
+function getCourse() {
+    axios.get('/admin/getCourses').then((response) => {
+        let jsonData = response.data;
+        $.each(jsonData, function (i) {
+            $('<tr>').html(
+                "<td>"+ jsonData[i].course_name +"</td>"+
+                "<td>"+ jsonData[i].short_des +"</td>"+
+                "<td>"+ jsonData[i].total_lecture +"</td>"+
+                "<td>"+ jsonData[i].total_students +"</td>"+
+                "<td><a> <i class='far fa-edit'></i> </a></td>"+
+                "<td><a> <i class='far fa-trash-alt'></i> </a></td>"
+            ).appendTo('#courseTableBody')
+        })
+    }).then((error) => {
+
+    })
+}
+
+// Add course btn click
+$('#addCourseBtn').click(function () {
+    $('#addCourseModal').modal('show');
+})
+
+$('#courseAddConfirmBtn').click(function () {
+    let name = $('#addCourseName').val();
+    let image = $('#addCourseImage').val();
+    let sDes = $('#addCourseShortDes').val();
+    let title = $('#addCourseTitle').val();
+    let lDes = $('#addCourseLongDes').val();
+    let tStu = $('#addCourseTotalL').val();
+    let tLec = $('#addCourseTotalStu').val();
+    let sAll = $('#addCourseAllSkills').val();
+    let vUrl = $('#addCourseVideoUrl').val();
+    let cLink = $('#addCourseLink').val();
+
+    adddCourse(name, image, sDes, title, lDes, tLec, tStu, sAll, vUrl, cLink)
+})
+
+// Add course
+function adddCourse(courseName, courseImage, shortDes, courseTitle, longDes, totalL, totalS, skillAll, videoUrl, courseLink) {
+    axios.post('/admin/addCourse', {
+        course_name: courseName,
+        course_image: courseImage,
+        short_des: shortDes,
+        title: courseTitle,
+        long_des: longDes,
+        total_lecture: totalL,
+        total_students: totalS,
+        skill_all: skillAll,
+        video_url: videoUrl,
+        course_link: courseLink
+    }).then((response) => {
+        if(response.status == 200 & response.data == 1) {
+            alert('success')
+        } else {
+            alert('error')
+        }
+    }).catch((error) => {
+        alert('error')
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getCategoryData() {
     axios.get('/admin/getCategoryData').then(function (response) {
         if(response.status == 200) {

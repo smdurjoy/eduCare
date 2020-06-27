@@ -25,7 +25,7 @@ class HomeController extends Controller
     }
 
     function getHomeCategoryData() {
-        $result = Category::select('category_name', 'category_image')->get();
+        $result = Category::select('category_name', 'category_image')->orderBy('id', 'desc')->get();
         return $result;
     }
 

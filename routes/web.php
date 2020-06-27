@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // Home page controllers
 Route::get('/', 'HomeController@index');
@@ -43,6 +33,11 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
     Route::post('/categoryDetails', 'CategoryController@categoryDetails');
     Route::post('/editCategory', 'CategoryController@editCategory');
     Route::post('/addCategory', 'CategoryController@addCategory');
+
+//    Admin course routes
+    Route::get('/course', 'CourseController@index');
+    Route::get('/getCourses', 'CourseController@getCourseData');
+    Route::post('/addCourse', 'CourseController@addCourse');
 });
 
 

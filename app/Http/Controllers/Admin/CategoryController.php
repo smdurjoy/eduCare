@@ -13,7 +13,7 @@ class CategoryController extends Controller
     }
 
     function getCategoryData() {
-        $result = Category::all();
+        $result = Category::orderBy('id', 'desc')->get();
         return $result;
     }
 
