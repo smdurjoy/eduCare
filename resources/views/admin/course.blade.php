@@ -32,9 +32,12 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body p-4">
-                    <h5 class="text-center mb-3">Add Course</h5>
+                    <h5 class="text-center mb-4">Add Course</h5>
                     <div class="row" id="courseAddDetails">
                         <div class="col-md-6">
+                            <select class="browser-default custom-select mb-4" id="addCourseCategory">
+                                <option selected>Select Category</option>
+                            </select>
                             <input type="text" id="addCourseName" class="form-control mb-4" placeholder="Enter Course Name">
                             <input type="text" id="addCourseImage" class="form-control mb-4" placeholder="Enter Course Image URL">
                             <input type="text" id="addCourseShortDes" class="form-control mb-4" placeholder="Enter Course Short Description">
@@ -47,6 +50,7 @@
                             <textarea class="form-control mb-4" id="addCourseAllSkills" rows="3"  placeholder="Enter All Skills"></textarea>
                             <input type="text" id="addCourseVideoUrl" class="form-control mb-4" placeholder="Enter Course Video Url">
                             <input type="text" id="addCourseLink" class="form-control mb-4" placeholder="Enter Course Link">
+                            <input type="text" id="addCatName" class="form-control mb-4">
                         </div>
                     </div>
                 </div>
@@ -57,6 +61,11 @@
             </div>
         </div>
     </div>
+
+    <table>
+        <tbody class="catBody">
+        </tbody>
+    </table>
 
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Category;
 use App\Model\Course;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,13 @@ class CourseController extends Controller
     function getCourseData() {
         $result = Course::orderBy('id', 'desc')->get();
         return $result;
+    }
+
+    function getCategory() {
+        $data = Category::select('id', 'category_name')->get();
+        $data = json_decode(json_encode($data), true);
+//        echo "<pre>"; print_r($data); die();
+        return $data;
     }
 
     function addCourse(Request $request) {
@@ -40,5 +48,10 @@ class CourseController extends Controller
         } else {
             return 0;
         }
+    }
+
+    function editCourse() {
+        $result = Course::with('category')->get();
+        return $result;
     }
 }

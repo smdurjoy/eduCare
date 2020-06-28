@@ -38,6 +38,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
     Route::get('/course', 'CourseController@index');
     Route::get('/getCourses', 'CourseController@getCourseData');
     Route::post('/addCourse', 'CourseController@addCourse');
+    Route::get('/getCategory', 'CourseController@getCategory');
+    Route::get('/editCourse', 'CourseController@editCourse');
 });
 
 

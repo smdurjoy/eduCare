@@ -23,12 +23,31 @@ function getCourse() {
     })
 }
 
+function getCategory() {
+    axios.get('/admin/getCategory').then((response) => {
+        let categoryData = response.data;
+        $.each(categoryData, function (i) {
+            $('<option>').html(
+                "<option><h3>"+categoryData[i].id+ ".</h3> " + categoryData[i].category_name +"</option>"
+            ).appendTo('#addCourseCategory')
+        })
+    }).catch((error) => {
+
+    })
+}
+
 // Add course btn click
 $('#addCourseBtn').click(function () {
     $('#addCourseModal').modal('show');
+    getCategory();
 })
 
 $('#courseAddConfirmBtn').click(function () {
+    $('#addCourseCategory').change(function (e) {
+        // let cateName = this.value;
+        let name = $('#addCatName').val(this.value)
+        console.log(name)
+    });
     let name = $('#addCourseName').val();
     let image = $('#addCourseImage').val();
     let sDes = $('#addCourseShortDes').val();
@@ -40,11 +59,11 @@ $('#courseAddConfirmBtn').click(function () {
     let vUrl = $('#addCourseVideoUrl').val();
     let cLink = $('#addCourseLink').val();
 
-    adddCourse(name, image, sDes, title, lDes, tLec, tStu, sAll, vUrl, cLink)
+    addCourse(name, image, sDes, title, lDes, tLec, tStu, sAll, vUrl, cLink)
 })
 
 // Add course
-function adddCourse(courseName, courseImage, shortDes, courseTitle, longDes, totalL, totalS, skillAll, videoUrl, courseLink) {
+function addCourse(courseName, courseImage, shortDes, courseTitle, longDes, totalL, totalS, skillAll, videoUrl, courseLink) {
     axios.post('/admin/addCourse', {
         course_name: courseName,
         course_image: courseImage,
@@ -66,10 +85,6 @@ function adddCourse(courseName, courseImage, shortDes, courseTitle, longDes, tot
         alert('error')
     })
 }
-
-
-
-
 
 
 
