@@ -26,7 +26,8 @@ class CourseController extends Controller
     }
 
     function addCourse(Request $request) {
-        $catId = 1;
+//        $catId = 1;
+        $catId = $request->input('category_id');
         $courseName = $request->input('course_name');
         $courseImage = $request->input('course_image');
         $shortDes = $request->input('short_des');
@@ -50,8 +51,9 @@ class CourseController extends Controller
         }
     }
 
-    function editCourse() {
-        $result = Course::with('category')->get();
+    function getCourseDetails(Request $request) {
+        $id = $request->input('id');
+        $result = Course::where('id', $id)->with('category')->get();
         return $result;
     }
 }

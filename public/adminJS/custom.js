@@ -4,6 +4,34 @@ $(document).ready(function () {
 });
 
 
+// Legal functions
+
+function getLegalData() {
+    axios.get('/admin/legalData').then((response) => {
+        const jsonData = response.data;
+        $.each(jsonData, function (i) {
+            $('<tr>').html(
+                "<td>"+ jsonData[i].about_us +"</td>" +
+                "<td>"+ jsonData[i].privacy_policy +"</td>" +
+                "<td>"+ jsonData[i].refund_policy +"</td>" +
+                "<td>"+ jsonData[i].terms_and_condition +"</td>"
+            ).appendTo('#legalTableBody')
+        })
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Course functions
 //Get course data
 function getCourse() {
     axios.get('/admin/getCourses').then((response) => {
@@ -14,26 +42,43 @@ function getCourse() {
                 "<td>"+ jsonData[i].short_des +"</td>"+
                 "<td>"+ jsonData[i].total_lecture +"</td>"+
                 "<td>"+ jsonData[i].total_students +"</td>"+
-                "<td><a> <i class='far fa-edit'></i> </a></td>"+
-                "<td><a> <i class='far fa-trash-alt'></i> </a></td>"
+                "<td><a id='editCourseBtn' data-id="+ jsonData[i].id +"> <i class='far fa-edit'></i> </a></td>"+
+                "<td><a href='#'> <i class='far fa-trash-alt deleteButton'></i> </a></td>"
             ).appendTo('#courseTableBody')
         })
     }).then((error) => {
 
     })
+
+    $('#editCourseBtn').click(function () {
+        $('#editCourseModal').modal('show');
+        // let id = $(this).data('id');
+        // courseDetails(id);
+    });
+
 }
+
+$('.deleteButton').click(function () {
+    $('#deleteCourseModal').modal('show');
+})
 
 function getCategory() {
     axios.get('/admin/getCategory').then((response) => {
         let categoryData = response.data;
         $.each(categoryData, function (i) {
             $('<option>').html(
-                "<option><h3>"+categoryData[i].id+ ".</h3> " + categoryData[i].category_name +"</option>"
+                "<option id='catId' data-id="+ categoryData[i].id+">"+ categoryData[i].category_name +"</option>"
             ).appendTo('#addCourseCategory')
         })
+
     }).catch((error) => {
 
     })
+}
+
+function getCateId() {
+    let catId = document.getElementById('cateId').getAttribute('value');
+    return catId;
 }
 
 // Add course btn click
@@ -42,29 +87,42 @@ $('#addCourseBtn').click(function () {
     getCategory();
 })
 
+$('#addCourseCategory').change(function (e) {
+    let catId = $(this).data('id');
+    // let cateName = this.value;
+    // let catId = $('#cateId').val(this.value)
+    // let catId = $('#cateId').getAttribute('value');
+    // let catId = getCateId();
+    console.log(catId)
+})
+
+
 $('#courseAddConfirmBtn').click(function () {
     $('#addCourseCategory').change(function (e) {
-        // let cateName = this.value;
-        let name = $('#addCatName').val(this.value)
-        console.log(name)
-    });
-    let name = $('#addCourseName').val();
-    let image = $('#addCourseImage').val();
-    let sDes = $('#addCourseShortDes').val();
-    let title = $('#addCourseTitle').val();
-    let lDes = $('#addCourseLongDes').val();
-    let tStu = $('#addCourseTotalL').val();
-    let tLec = $('#addCourseTotalStu').val();
-    let sAll = $('#addCourseAllSkills').val();
-    let vUrl = $('#addCourseVideoUrl').val();
-    let cLink = $('#addCourseLink').val();
+        let cateName = this.value;
+        // let catId = $('#cateId').val(this.value)
+        // let catId = $('#cateId').getAttribute('value');
+        console.log(cateName)
 
-    addCourse(name, image, sDes, title, lDes, tLec, tStu, sAll, vUrl, cLink)
+        // let name = $('#addCourseName').val();
+        // let image = $('#addCourseImage').val();
+        // let sDes = $('#addCourseShortDes').val();
+        // let title = $('#addCourseTitle').val();
+        // let lDes = $('#addCourseLongDes').val();
+        // let tStu = $('#addCourseTotalL').val();
+        // let tLec = $('#addCourseTotalStu').val();
+        // let sAll = $('#addCourseAllSkills').val();
+        // let vUrl = $('#addCourseVideoUrl').val();
+        // let cLink = $('#addCourseLink').val();
+        //
+        // addCourse(catId, name, image, sDes, title, lDes, tLec, tStu, sAll, vUrl, cLink)
+    });
 })
 
 // Add course
-function addCourse(courseName, courseImage, shortDes, courseTitle, longDes, totalL, totalS, skillAll, videoUrl, courseLink) {
+function addCourse(catId, courseName, courseImage, shortDes, courseTitle, longDes, totalL, totalS, skillAll, videoUrl, courseLink) {
     axios.post('/admin/addCourse', {
+        category_id: catId,
         course_name: courseName,
         course_image: courseImage,
         short_des: shortDes,
@@ -86,6 +144,24 @@ function addCourse(courseName, courseImage, shortDes, courseTitle, longDes, tota
     })
 }
 
+// Edit course
+function courseDetails(id) {
+    axios.post('/courseDetails', {id: id}).then((response) => {
+        let jsonData = response.data;
+        $('#editCourseName').val(jsonData[0].course_name);
+        $('#editCourseImage').val(jsonData[0].course_image);
+        $('#editCourseShortDes').val(jsonData[0].short_des);
+        $('#editCourseTitle').val(jsonData[0].title);
+        $('#editCourseLongDes').val(jsonData[0].long_des);
+        $('#editCourseTotalL').val(jsonData[0].total_lecture);
+        $('#editCourseTotalStu').val(jsonData[0].total_students);
+        $('#editCourseAllSkills').val(jsonData[0].skill_all);
+        $('#editCourseVideoUrl').val(jsonData[0].video_url);
+        $('#editCourseLink').val(jsonData[0].course_link);
+    }).catch((error) => {
+
+    })
+}
 
 
 
@@ -98,7 +174,7 @@ function addCourse(courseName, courseImage, shortDes, courseTitle, longDes, tota
 
 
 
-
+// category functions
 
 function getCategoryData() {
     axios.get('/admin/getCategoryData').then(function (response) {
