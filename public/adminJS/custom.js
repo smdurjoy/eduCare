@@ -3,33 +3,72 @@ $(document).ready(function () {
     $('.dataTables_length').addClass('bs-select');
 });
 
-
 // Legal functions
-
 function getLegalData() {
     axios.get('/admin/legalData').then((response) => {
+        $('#legalTableBody').empty();
         const jsonData = response.data;
         $.each(jsonData, function (i) {
             $('<tr>').html(
-                "<td>"+ jsonData[i].about_us +"</td>" +
-                "<td>"+ jsonData[i].privacy_policy +"</td>" +
-                "<td>"+ jsonData[i].refund_policy +"</td>" +
-                "<td>"+ jsonData[i].terms_and_condition +"</td>"
+                "<td>" + jsonData[i].about_us + "</td>" +
+                "<td>" + jsonData[i].privacy_policy + "</td>" +
+                "<td>" + jsonData[i].refund_policy + "</td>" +
+                "<td>" + jsonData[i].terms_and_condition + "</td>" +
+                "<td class='d-none' id='legalId' data-id="+ jsonData[i].id +"></td>"
             ).appendTo('#legalTableBody')
         })
     })
 }
 
+$('#editLegalBtn').click(function () {
+    $('#editLegalModal').modal('show');
+    let id = $('#legalId').data('id');
+    getEditLegalData(id)
+})
 
+function getEditLegalData(id) {
+    axios.post('/admin/legalEditDetails', {
+        id: id
+    }).then((response) => {
+        let legalData = response.data;
+        $('#editAboutUs').val(legalData[0].about_us);
+        $('#editPrivacyPolicy').val(legalData[0].privacy_policy);
+        $('#editTermsCondition').val(legalData[0].terms_and_condition);
+        $('#editRefundPolicy').val(legalData[0].refund_policy);
+    }).catch((error) => {
 
+    })
+}
 
+$('#legalEditConfirmBtn').click(function() {
+    const id = $('#legalId').data('id');
+    const aboutUs = $('#editAboutUs').val();
+    const privacy = $('#editPrivacyPolicy').val();
+    const terms = $('#editTermsCondition').val();
+    const refund = $('#editRefundPolicy').val();
 
+    postEditLegalData(id, aboutUs, privacy, terms, refund)
+})
 
-
-
-
-
-
+function postEditLegalData(id, aboutUs, privacy, terms, refund) {
+    axios.post('/admin/editLegal', {
+        id: id,
+        about_us: aboutUs,
+        privacy_policy: privacy,
+        refund_policy: refund,
+        terms_and_condition: terms
+    }).then((response) => {
+        if(response.status == 200) {
+            toastr.success('Legal Data Updated Successfully !');
+            getLegalData();
+            $('#editLegalModal').modal('hide');
+        } else {
+            alert('Failed !')
+        }
+    }).catch((error) => {
+        alert('Failed !')
+    })
+}
 
 // Course functions
 //Get course data
@@ -38,11 +77,11 @@ function getCourse() {
         let jsonData = response.data;
         $.each(jsonData, function (i) {
             $('<tr>').html(
-                "<td>"+ jsonData[i].course_name +"</td>"+
-                "<td>"+ jsonData[i].short_des +"</td>"+
-                "<td>"+ jsonData[i].total_lecture +"</td>"+
-                "<td>"+ jsonData[i].total_students +"</td>"+
-                "<td><a id='editCourseBtn' data-id="+ jsonData[i].id +"> <i class='far fa-edit'></i> </a></td>"+
+                "<td>" + jsonData[i].course_name + "</td>" +
+                "<td>" + jsonData[i].short_des + "</td>" +
+                "<td>" + jsonData[i].total_lecture + "</td>" +
+                "<td>" + jsonData[i].total_students + "</td>" +
+                "<td><a id='editCourseBtn' data-id=" + jsonData[i].id + "> <i class='far fa-edit'></i> </a></td>" +
                 "<td><a href='#'> <i class='far fa-trash-alt deleteButton'></i> </a></td>"
             ).appendTo('#courseTableBody')
         })
@@ -67,7 +106,7 @@ function getCategory() {
         let categoryData = response.data;
         $.each(categoryData, function (i) {
             $('<option>').html(
-                "<option id='catId' data-id="+ categoryData[i].id+">"+ categoryData[i].category_name +"</option>"
+                "<option id='catId' data-id=" + categoryData[i].id + ">" + categoryData[i].category_name + "</option>"
             ).appendTo('#addCourseCategory')
         })
 
@@ -134,7 +173,7 @@ function addCourse(catId, courseName, courseImage, shortDes, courseTitle, longDe
         video_url: videoUrl,
         course_link: courseLink
     }).then((response) => {
-        if(response.status == 200 & response.data == 1) {
+        if (response.status == 200 & response.data == 1) {
             alert('success')
         } else {
             alert('error')
@@ -164,32 +203,22 @@ function courseDetails(id) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // category functions
 
 function getCategoryData() {
     axios.get('/admin/getCategoryData').then(function (response) {
-        if(response.status == 200) {
+        if (response.status == 200) {
             $('#mainDiv').removeClass('d-none');
             $('#loaderDiv').addClass('d-none');
             $('#categoryTableBody').empty();
             let categoryData = response.data;
             $.each(categoryData, function (i) {
                 $('<tr>').html(
-                    "<td> <img class='tableImage' src="+ categoryData[i].category_image +"> </td>" +
-                    "<td>"+ categoryData[i].category_name +"</td>" +
-                    "<td>"+ categoryData[i].status +"</td>" +
-                    "<td> <a class='editCategoryBtn' data-id="+ categoryData[i].id +"> <i class='far fa-edit'></i> </a> </td>" +
-                    "<td> <a class='deleteCategoryBtn' data-id="+ categoryData[i].id +"> <i class='far fa-trash-alt'></i> </a> </td>"
+                    "<td> <img class='tableImage' src=" + categoryData[i].category_image + "> </td>" +
+                    "<td>" + categoryData[i].category_name + "</td>" +
+                    "<td>" + categoryData[i].status + "</td>" +
+                    "<td> <a class='editCategoryBtn' data-id=" + categoryData[i].id + "> <i class='far fa-edit'></i> </a> </td>" +
+                    "<td> <a class='deleteCategoryBtn' data-id=" + categoryData[i].id + "> <i class='far fa-trash-alt'></i> </a> </td>"
                 ).appendTo('#categoryTableBody');
             });
 
@@ -222,14 +251,14 @@ function getCategoryData() {
 
 // Get delete category id from confirm button and pass it into delete function
 $('#categoryDeleteConfirmBtn').click(function () {
-    let id =  $('.deleteDataId').html();
+    let id = $('.deleteDataId').html();
     deleteCategory(id);
 });
 
 // Delete category function
 function deleteCategory(deleteId) {
     axios.post('/admin/deleteCategory', {id: deleteId}).then(function (response) {
-        if(response.status == 200 && response.data == 1) {
+        if (response.status == 200 && response.data == 1) {
             $('#deleteModal').modal('hide');
             toastr.success('Category Deleted Successfully !');
             getCategoryData();
@@ -247,8 +276,8 @@ function deleteCategory(deleteId) {
 
 // Get each category data
 function editCategoryDetails(detailsId) {
-    axios.post('/admin/categoryDetails', {id:detailsId}).then(function (response) {
-        if(response.status == 200) {
+    axios.post('/admin/categoryDetails', {id: detailsId}).then(function (response) {
+        if (response.status == 200) {
             $('#categoryEditDetails').removeClass('d-none');
             $('#categoryLoaderDiv').addClass('d-none');
             let jsonData = response.data;
@@ -277,16 +306,13 @@ $('#categoryEditConfirmBtn').click(function () {
 // Edit category function
 function updateCategory(categoryUpdateId, categoryName, categoryImage, categoryDes) {
     let alpha = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
-    if(categoryName.length == 0) {
+    if (categoryName.length == 0) {
         toastr.error('Category Name is Empty');
-    }
-    else if(!categoryName.match(alpha)) {
+    } else if (!categoryName.match(alpha)) {
         toastr.error('Numbers Not Allowed !');
-    }
-    else if(categoryImage.length == 0) {
+    } else if (categoryImage.length == 0) {
         toastr.error('Please Select an Image');
-    }
-    else if(categoryDes.length == 0) {
+    } else if (categoryDes.length == 0) {
         toastr.error('Category Description is Empty');
     } else {
         axios.post('/admin/editCategory', {
@@ -295,7 +321,7 @@ function updateCategory(categoryUpdateId, categoryName, categoryImage, categoryD
             image: categoryImage,
             description: categoryDes
         }).then(function (response) {
-            if(response.status == 200 && response.data == 1) {
+            if (response.status == 200 && response.data == 1) {
                 toastr.success('Category Updated Successfully !');
                 getCategoryData();
                 $('#editModal').modal('hide');
@@ -327,16 +353,13 @@ $('#categoryAddConfirmBtn').click(function () {
 
 function addCategory(categoryName, categoryImage, categoryDes) {
     let alpha = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/
-    if(categoryName.length == 0) {
+    if (categoryName.length == 0) {
         toastr.error('Category Name is Empty');
-    }
-    else if(!categoryName.match(alpha)) {
+    } else if (!categoryName.match(alpha)) {
         toastr.error('Numbers Not Allowed !');
-    }
-    else if(categoryImage.length == 0) {
+    } else if (categoryImage.length == 0) {
         toastr.error('Please Select an Image');
-    }
-    else if(categoryDes.length == 0) {
+    } else if (categoryDes.length == 0) {
         toastr.error('Category Description is Empty');
     } else {
         axios.post('/admin/addCategory', {
@@ -344,7 +367,7 @@ function addCategory(categoryName, categoryImage, categoryDes) {
             image: categoryImage,
             des: categoryDes
         }).then(function (response) {
-            if(response.status == 200 && response.data == 1) {
+            if (response.status == 200 && response.data == 1) {
                 toastr.success('Category Added Successfully !');
                 getCategoryData();
                 $('#addCategoryModal').modal('hide');
@@ -360,4 +383,3 @@ function addCategory(categoryName, categoryImage, categoryDes) {
         })
     }
 }
-

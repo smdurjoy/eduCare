@@ -45,6 +45,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 //   Legal routes
     Route::get('/legal', 'InformationController@index');
     Route::get('/legalData', 'InformationController@getLegalData');
+    Route::post('/legalEditDetails', 'InformationController@getLegalEditDetails');
+    Route::post('/editLegal', 'InformationController@editLegal');
 });
 
 
